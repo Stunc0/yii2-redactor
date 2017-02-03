@@ -27,10 +27,10 @@ class FileManagerJsonAction extends Action
     public function run()
     {
         $config = ['recursive' => true];
-        if (!is_null(Yii::$app->controller->module->imageAllowExtensions)) {
+        if (!is_null(Yii::$app->controller->module->fileAllowExtensions)) {
             $onlyExtensions = array_map(function ($ext) {
                 return '*.' . $ext;
-            }, Yii::$app->controller->module->imageAllowExtensions);
+            }, Yii::$app->controller->module->fileAllowExtensions);
             $config['only'] = $onlyExtensions;
         }
         $filesPath = FileHelper::findFiles(Yii::$app->controller->module->getSaveDir(), $config);

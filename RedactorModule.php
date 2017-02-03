@@ -28,7 +28,7 @@ class RedactorModule extends \yii\base\Module
     public $imageManagerJsonRoute = ['/redactor/upload/image-json'];
     public $fileManagerJsonRoute = ['/redactor/upload/file-json'];
     public $imageAllowExtensions = ['jpg', 'png', 'gif', 'bmp', 'svg'];
-    public $fileAllowExtensions = null;
+    public $fileAllowExtensions = ['pdf', 'ppt', 'pptx', 'doc', 'docx', 'xls', 'xlsx', 'csv'];
     public $widgetOptions=[];
     public $widgetClientOptions=[];
 
@@ -45,8 +45,8 @@ class RedactorModule extends \yii\base\Module
      */
     public function getSaveDir()
     {
-        $path = Yii::getAlias($this->uploadDir) . DIRECTORY_SEPARATOR . $this->getOwnerPath();    
-        if(!file_exists($path)){      
+        $path = Yii::getAlias($this->uploadDir) . DIRECTORY_SEPARATOR . $this->getOwnerPath();
+        if(!file_exists($path)){
             if (!FileHelper::createDirectory($path, 0775,$recursive = true )) {
                 throw new InvalidConfigException('$uploadDir does not exist and default path creation failed');
             }
